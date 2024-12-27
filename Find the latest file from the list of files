@@ -1,0 +1,19 @@
+public static File findLatestFile(File[] files) {
+        if (files == null || files.length == 0) {
+            return null; // Return null if the array is empty or null
+        }
+
+        File latestFile = files[0]; // Assume the first file is the latest initially
+
+        // Iterate through the list of files
+        for (File file : files) {
+            if (file.exists() && file.isFile()) {
+                // Compare last modified times
+                if (file.lastModified() > latestFile.lastModified()) {
+                    latestFile = file; // Update the latest file
+                }
+            }
+        }
+
+        return latestFile; // Return the latest file
+    }
